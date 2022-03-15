@@ -17,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Subscription.init(
     {
+      type: {
+        type: DataTypes.STRING,
+      },
       uuid: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
-      },
-      type: {
-        type: DataTypes.STRING,
       },
       price: {
         type: DataTypes.INTEGER,
@@ -44,12 +44,15 @@ module.exports = (sequelize, DataTypes) => {
       },
       popularity: {
         type: DataTypes.INTEGER,
+        defaultValue: 0,
       },
     },
     {
       sequelize,
       tableName: "subscriptions",
       modelName: "Subscription",
+      createdAt: "created_at",
+      updatedAt: "updated_at",
     }
   );
   return Subscription;
